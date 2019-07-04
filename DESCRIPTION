@@ -1,0 +1,12 @@
+Package: RUMBA
+Type: Package
+Title: A Set of tools for the analysis of the RUMBA (Región Urbana Metropolitana de Buenos Aires) 
+Version: 0.1.0
+Author: H. Antonio Vazquez Brust
+Maintainer: H. Antonio Vazquez Brust <avazquez@gmail.com>
+Description: This package provides functions for easy access to geocoding (reverse and direct) and address normalisation for places within the RUMBA.
+    Coming soon: shapefiles and Census data
+License: GPL
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
