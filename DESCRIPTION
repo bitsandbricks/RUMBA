@@ -1,6 +1,6 @@
 Package: RUMBA
 Type: Package
-Title: A Set of tools for the analysis of the RUMBA (Región Urbana Metropolitana de Buenos Aires) 
+Title: A Set of Tools for the Analysis of the RUMBA (Región Urbana Metropolitana de Buenos Aires) 
 Version: 0.1.0
 Author: H. Antonio Vazquez Brust
 Maintainer: H. Antonio Vazquez Brust <avazquez@gmail.com>
