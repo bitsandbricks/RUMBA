@@ -1,6 +1,15 @@
 # RUMBA
 
-Un conjunto de herramientas para el análisis de la RUMBA (Región Urbana Metropolitana de Buenos Aires) usando R
+Un conjunto de herramientas para el análisis de la RUMBA (Región Urbana Metropolitana de Buenos Aires) usando R.
+
+Ya disponibles: 
+
+- funciones de georeferenciamiento
+
+Coming soon:
+
+- shapefiles con límites de radios censales, partidos, y "coronas" del conurbano
+- datos de los censo 1991, 2001, 2010
 
 Instalación
 -----------
