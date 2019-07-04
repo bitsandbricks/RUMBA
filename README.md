@@ -2,6 +2,12 @@
 
 Un conjunto de herramientas para el análisis de la RUMBA (Región Urbana Metropolitana de Buenos Aires) usando R
 
+Instalación
+-----------
+    install.packages("devtools")
+    devtools::install_github("bitsandbricks/RUMBA")
+
+
 Funciones de georeferenciamiento
 --------------------------------
 
