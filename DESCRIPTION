@@ -9,6 +9,10 @@ Description: This package provides functions for easy access to geocoding and ad
 Imports: 
     httr,
     utils
+Suggests: 
+    knitr, 
+    rmarkdown
+VignetteBuilder: knitr
 License: GPL
 Encoding: UTF-8
 LazyData: true

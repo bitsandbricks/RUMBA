@@ -1,0 +1,88 @@
+---
+title: "Georeferenciando con RUMBA"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Georeferenciando con RUMBA}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Funciones de georeferenciamiento
+
+RUMBA incluye dos funciones que permiten obtener coordenadas precisas (longitud y latitud) que corresponden a direcciones dentro de los límites de la Región Urbana Metropolitana de Buenos Aires.
+
+Las funciones consultan la API del [Normalizador de direcciones](http://servicios.usig.buenosaires.gob.ar/normalizar) de la [USIG](http://usig.buenosaires.gob.ar/). Ademas de las coordenadas, se obtiene la dirección normalizada (escrita de forma inequívoca)
+
+
+### USIG_geocode
+
+Georeferencia direcciones.
+
+Uso general: `USIG_geocode(address)`, donde `address` es una dirección dentro de los límites de la Región Urbana Metropolitana de Buenos Aires. 
+
+La dirección debe estar expresada como _"calle altura, partido"_, _"calle altura, municipio"_, _"calle y calle, partido"_, o _"calle altura, municipio"_. El partido o municipio son opcionales. De no ser aclarados, y encontrarse múltiples direcciones que coincidan con la búsqueda, se entregaran las coordenadas dentro de la Ciudad Autónoma de Buenos Aires (si existieran), o en su defecto las del primer partido -por orden alfabético- donde se haya encontrado la dirección.
+
+En resumen: es mejor incluir partido o municipio en las direcciones a georeferenciar.
+
+#### Ejemplos
+
+```{r}
+library(RUMBA)
+
+USIG_geocode("9 de julio y belgrano")
+```
+
+Para asegurarse de recibir el resultado deseado, explicitar el municipio o partido -sobre todo si es fuera de CABA:
+
+```{r}
+USIG_geocode("9 de julio y belgrano, temperley")
+```
+
+
+Se pueden georeferenciar varias direcciones a la vez:
+
+```{r}
+direcciones <- c("9 de Julio y Belgrano, Temperley", 
+                 "Callao y Corrientes, CABA", 
+                 "Anchorena 1210, La Lucila")
+
+USIG_geocode(direcciones)
+```
+
+
+### mutate_USIG_geocode
+
+Toma un dataframe que contien una columna con direcciones, y en base a ella agrega columnas con la longitudes y latitudes correspondientes.
+
+Uso general: `mutate_USIG_geocode(data, address)`, donde
+
+* `data` es un dataframe con una columna que contiene direcciones dentro de los límites de la Región Urbana Metropolitana de Buenos Aires
+* `address` es el nombre de la columna que contiene las direcciones
+
+La direcciones debe estar expresadas como se explica para `USIG_geocode`
+
+#### Ejemplo
+
+Creamos un dataframe que incluye direcciones:
+
+```{r}
+datos <- data.frame(lugar = c("A", "B", "C"),
+                    valor = c(225000, 130500, 34000),
+                    direccion = c("9 de Julio y Belgrano, Temperley",
+                                   "Callao y Corrientes",
+                                   "Anchorena 1210, La Lucila"))
+
+datos
+```
+
+Con `mutate_USIG_geocode`, agregamos columnas de lon y lat (obsérvese qeu el nombre de la columna con las direcciones va entre comillas):
+
+
+```{r}
+mutate_USIG_geocode(datos, "direccion")
+```
+
