@@ -6,7 +6,9 @@ Author: H. Antonio Vazquez Brust
 Maintainer: H. Antonio Vazquez Brust <avazquez@gmail.com>
 Description: This package provides functions for easy access to geocoding and address normalisation for places within the RUMBA.
     Coming soon: shapefiles and Census data
-Imports: httr
+Imports: 
+    httr,
+    utils
 License: GPL
 Encoding: UTF-8
 LazyData: true

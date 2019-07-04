@@ -3,35 +3,36 @@
 #' uso: USIG_geocode(direccion)
 #'
 #' @import httr
-#' @param direccion Una dirección dentro de los límites de la Región Urbana Metropolitana de Buenos Aires
+#' @importFrom utils URLencode
+#' @export USIG_geocode
+#' @param address Una dirección dentro de los límites de la Región Urbana Metropolitana de Buenos Aires
 #' @examples
-#'
-#' Ejemplos:
 #' USIG_geocode("9 de julio y belgrano")
 #'
-#' resultado
+#'#  Resultado:
 #'
-#'             address_normalised        lon        lat
-#'9 DE JULIO AV. y BELGRANO, CABA -58.381226 -34.613090
-#'
-#'
-#' Si se trata de una dirección fuera de la Ciudad Autónoma de Buenos Aires, explicitar el municipio o partido
+#'#             address_normalised        lon        lat
+#'#9 DE JULIO AV. y BELGRANO, CABA -58.381226 -34.613090
+#'#
+#'#
+#'# Si se trata de una dirección fuera de la Ciudad Autónoma de Buenos Aires, explicitar el municipio o partido
 #' USIG_geocode("9 de julio y belgrano, temperley")
 #'
-#'  resultado
+#'#  Resultado:
 #'
-#'                                                   address_normalised       lon       lat
-#'Avenida 9 de Julio y Paso bajo nivel Manuel Belgrano, Lomas de Zamora -58.39645 -34.77974
+#'#                                                   address_normalised       lon       lat
+#'#Avenida 9 de Julio y Paso bajo nivel Manuel Belgrano, Lomas de Zamora -58.39645 -34.77974
+#'#
 #'
-#' Se pueden georeferenciar varias direcciones a la vez:
+#'# Se pueden georeferenciar varias direcciones a la vez:
 #'
 #' USIG_geocode(c("9 de Julio y Belgrano, Temperley", "Callao y Corrientes", "Anchorena 1210, La Lucila"))
 #'
-#'  resultado
-#'                                                    address_normalised               lon               lat
-#' Avenida 9 de Julio y Paso bajo nivel Manuel Belgrano, Lomas de Zamora       -58.3964491       -34.7797373
-#'                                     CALLAO AV. y CORRIENTES AV., CABA        -58.392293        -34.604434
-# '                                  Tomás Anchorena 1210, Vicente López -58.4935336530612 -34.5009281857143
+#'#  Resultado:
+#'#                                                    address_normalised               lon               lat
+#'# Avenida 9 de Julio y Paso bajo nivel Manuel Belgrano, Lomas de Zamora       -58.3964491       -34.7797373
+#'#                                     CALLAO AV. y CORRIENTES AV., CABA        -58.392293        -34.604434
+# '#                                  Tomás Anchorena 1210, Vicente López -58.4935336530612 -34.5009281857143
 
 USIG_geocode <- function(address) {
 
