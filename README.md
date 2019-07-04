@@ -6,10 +6,10 @@ Ya disponibles:
 
 - funciones de georeferenciamiento
 
-Coming soon:
+Por venir: 
 
 - shapefiles con límites de radios censales, partidos, y "coronas" del conurbano
-- datos de los censo 1991, 2001, 2010
+- datos de los censos 1991, 2001, 2010
 
 Instalación
 -----------
