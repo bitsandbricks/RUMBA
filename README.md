@@ -1,6 +1,6 @@
-# RUMBA
+# RUMBA <img src="inst/figures/RUMBA_logo.png" width="240px" align="right" /> 
 
-Un conjunto de herramientas para el análisis de la RUMBA (Región Urbana Metropolitana de Buenos Aires) usando R.
+Un conjunto de herramientas para el análisis de la Región Urbana Metropolitana de Buenos Aires usando R.
 
 Ya disponibles: 
 
