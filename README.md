@@ -85,8 +85,8 @@ Se pueden georeferenciar varias direcciones a la vez:
 
 ### mutate\_USIG\_geocode
 
-Toma un dataframe que contien una columna con direcciones, y en base a
-ella agrega columnas con la longitudes y latitudes correspondientes.
+Toma un dataframe que contiene una columna con direcciones, y en base a
+ella agrega columnas con las longitudes y latitudes correspondientes.
 
 Uso general: `mutate_USIG_geocode(data, address)`, donde
 
