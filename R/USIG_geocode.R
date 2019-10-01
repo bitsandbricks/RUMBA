@@ -76,8 +76,8 @@ USIG_geocode <- function(address) {
 
 
             data.frame(address_normalised = ifelse(is.null(address_normalised), NA, address_normalised),
-                       lon = ifelse(is.null(x), NA, x),
-                       lat = ifelse(is.null(y), NA, y),
+                       lon = ifelse(is.null(x), NA, as.numeric(x)),
+                       lat = ifelse(is.null(y), NA, as.numeric(y)),
                        stringsAsFactors = FALSE)
         }
     }
