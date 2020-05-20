@@ -208,14 +208,10 @@ que el nombre de la columna con las direcciones va entre comillas):
 
     mutate_USIG_geocode(datos, "direccion")
 
-    ##   lugar  valor                        direccion
-    ## 1     A 225000 Villa 31, manzana 2
-    ## 2     B 130500              Rodrigo Bueno, manzana 2
-    ## 3     C  34000        Villa 1-11-14, manzana 5
-    ##                                                      address_normalised
-    ## 1                             Barrio Padre Carlos Mugica (Villa 31 bis)
-    ## 2                                            Asentamiento Rodrigo Bueno
-    ## 3                                Barrio Padre Ricciardelli (ex 1-11-14)
+    ##   lugar  valor                direccion                        address_normalised
+    ## 1     A 225000      Villa 31, manzana 2 Barrio Padre Carlos Mugica (Villa 31 bis)
+    ## 2     B 130500 Rodrigo Bueno, manzana 2                Asentamiento Rodrigo Bueno
+    ## 3     C  34000 Villa 1-11-14, manzana 5    Barrio Padre Ricciardelli (ex 1-11-14)
     ##                 lon               lat
     ## 1         -58.37897         -34.58448
     ## 2         -58.35382         -34.61905
