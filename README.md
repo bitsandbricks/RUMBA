@@ -5,6 +5,8 @@ Un conjunto de herramientas para el análisis de la Región Urbana Metropolitana
 Ya disponibles: 
 
 - funciones de georeferenciamiento
+- funciones de georeferenciamiento de manzanas en barrios vulnerables de la Ciudad de Buenos Aires
+
 
 Por venir: 
 
@@ -20,14 +22,14 @@ Instalación
 Funciones de georeferenciamiento
 --------------------------------
 
-RUMBA incluye dos funciones que permiten obtener coordenadas precisas
+RUMBA incluye cuatro funciones que permiten obtener coordenadas precisas
 (longitud y latitud) que corresponden a direcciones dentro de los
-límites de la Región Urbana Metropolitana de Buenos Aires.
+límites de la Región Urbana Metropolitana de Buenos Aires o bien de barrios vulnerables de la Ciudad de Buenos Aires.
 
 Las funciones consultan la API del [Normalizador de
-direcciones](http://servicios.usig.buenosaires.gob.ar/normalizar) de la
+direcciones](http://servicios.usig.buenosaires.gob.ar/normalizar) y de [Déficit Habitacional](https://epok.buenosaires.gob.ar/deficithabitacional/) de la
 [USIG](http://usig.buenosaires.gob.ar/). Ademas de las coordenadas, se
-obtiene la dirección normalizada (escrita de forma inequívoca)
+obtiene la dirección normalizada (escrita de forma inequívoca).
 
 ### USIG\_geocode
 
@@ -132,3 +134,87 @@ qeu el nombre de la columna con las direcciones va entre comillas):
     ## 2        -58.392293        -34.604434
     ## 3 -58.4935336530612 -34.5009281857143
 
+### USIG\_geocode\_barrios\_vulnerables
+
+Georeferencia direcciones en barrios vulnerables de la Ciuda de Buenos Aires.
+
+Uso general: `USIG_geocode_barrios_vulnerables(address)`, donde `address` es una dirección 
+dentro de los límites de un barrio vulnerable de la Ciudad de Buenos Aires.
+
+La dirección debe estar expresada como *“barrio vulnerable, manzana + número manzana”*. 
+
+#### Ejemplos
+
+    library(RUMBA)
+
+    USIG_geocode_barrios_vulnerables("Villa 31, manzana 8")
+
+    ##              barrio_vuln        lon        lat
+    ## Barrio 15 (Ciudad Oculta) -58.49024  -34.66918
+
+
+Se pueden georeferenciar varias direcciones a la vez:
+
+    direcciones <- c("Villa 31, manzana 2", 
+                     "Rodrigo Bueno, manzana 2", 
+                     "Villa 1-11-14, manzana 5")
+
+    USIG_geocode_barrios_vulnerables(direcciones)
+
+    ##                                                       barrio_vulnerable
+    ## 1                             Barrio Padre Carlos Mugica (Villa 31 bis)
+    ## 2                                            Asentamiento Rodrigo Bueno
+    ## 3                                Barrio Padre Ricciardelli (ex 1-11-14)
+    ##                 lon               lat
+    ## 1         -58.37897         -34.58448
+    ## 2         -58.35382         -34.61905
+    ## 3         -58.43477         -34.64977
+
+### mutate\_USIG\_geocode\_barrios\_vulnerables
+
+Toma un dataframe que contiene una columna con direcciones, y en base a
+ella agrega columnas con las longitudes y latitudes correspondientes y el nombre del barrio vulnerable oficial.
+
+Uso general: `mutate_USIG_geocode(data, address)`, donde
+
+-   `data` es un dataframe con una columna que contiene direcciones
+    de un barrio vulnerable de la Ciudad de Buenos Aires.
+-   `address` es el nombre de la columna que contiene las direcciones
+
+La direcciones debe estar expresadas como se explica para `USIG_geocode_barrios_vulnerables`
+
+#### Ejemplo
+
+Creamos un dataframe que incluye direcciones:
+
+    datos <- data.frame(lugar = c("A", "B", "C"),
+                        valor = c(225000, 130500, 34000),
+                        direccion = c("Villa 31, manzana 2",
+                                      "Rodrigo Bueno, manzana 2",
+                                       "Villa 1-11-14, manzana 5"))
+
+    datos
+
+    ##   lugar  valor                        direccion
+    ## 1     A 225000 9 de Julio y Belgrano, Temperley
+    ## 2     B 130500              Callao y Corrientes
+    ## 3     C  34000        Anchorena 1210, La Lucila
+
+Con `mutate_USIG_geocode_barrios_vulnerables`, agregamos columnas de lon y lat (obsérvese
+que el nombre de la columna con las direcciones va entre comillas):
+
+
+    mutate_USIG_geocode(datos, "direccion")
+
+    ##   lugar  valor                        direccion
+    ## 1     A 225000 Villa 31, manzana 2
+    ## 2     B 130500              Rodrigo Bueno, manzana 2
+    ## 3     C  34000        Villa 1-11-14, manzana 5
+    ##                                                      address_normalised
+    ## 1                             Barrio Padre Carlos Mugica (Villa 31 bis)
+    ## 2                                            Asentamiento Rodrigo Bueno
+    ## 3                                Barrio Padre Ricciardelli (ex 1-11-14)
+    ##                 lon               lat
+    ## 1         -58.37897         -34.58448
+    ## 2         -58.35382         -34.61905
+    ## 3         -58.43477         -34.64977
