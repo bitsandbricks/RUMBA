@@ -33,14 +33,6 @@
 # '#                                Barrio Padre Ricciardelli (ex 1-11-14)        -58.43477         -34.64977
 
 
-library(tidyverse)
-library(RCurl)
-library(rjson)
-
-USIG_geocode_barrios_vulnerables(c("Villa 31, manzana 2", "Rodrigo Bueno, manzana 2", "Villa 1-11-14, manzana 5"))
-
-USIG_geocode_barrios_vulnerables("Villa 15, manzana 8")
-
 USIG_geocode_barrios_vulnerables <- function(address) {
   
   make_call <- function(address) {
