@@ -195,10 +195,12 @@ Creamos un dataframe que incluye direcciones:
 
     datos
 
-    ##   lugar  valor                        direccion
-    ## 1     A 225000 9 de Julio y Belgrano, Temperley
-    ## 2     B 130500              Callao y Corrientes
-    ## 3     C  34000        Anchorena 1210, La Lucila
+
+    ##   lugar  valor                direccion
+    ## 1     A 225000      Villa 31, manzana 2
+    ## 2     B 130500 Rodrigo Bueno, manzana 2
+    ## 3     C  34000 Villa 1-11-14, manzana 5
+
 
 Con `mutate_USIG_geocode_barrios_vulnerables`, agregamos columnas de lon y lat (obsérvese
 que el nombre de la columna con las direcciones va entre comillas):
