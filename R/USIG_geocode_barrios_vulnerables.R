@@ -12,8 +12,8 @@
 #'
 #'#  Resultado:
 #'#
-#'#              barrio_vuln        lon        lat
-#'# Barrio 15 (Ciudad Oculta) -58.49024  -34.66918
+#'#                               barrio_vuln        lon        lat
+#'# Barrio Padre Carlos Mugica (Villa 31 bis) -58.37897   -34.58448
 #'#
 #'#
 #'# 

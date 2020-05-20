@@ -149,8 +149,8 @@ La dirección debe estar expresada como *“barrio vulnerable, manzana + número
 
     USIG_geocode_barrios_vulnerables("Villa 31, manzana 8")
 
-    ##              barrio_vuln        lon        lat
-    ## Barrio 15 (Ciudad Oculta) -58.49024  -34.66918
+    ##                               barrio_vuln        lon        lat
+    ## Barrio Padre Carlos Mugica (Villa 31 bis)  -58.37897  -34.58448
 
 
 Se pueden georeferenciar varias direcciones a la vez:
