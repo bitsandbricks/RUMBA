@@ -2,5 +2,9 @@
 
 export(USIG_geocode)
 export(mutate_USIG_geocode)
+export(USIG_geocode_barrios_vulnerables)
+export(mutate_USIG_geocode_barrios_vulnerables)
+import(rjson)
+import(RCurl)
 import(httr)
 importFrom(utils,URLencode)
