@@ -97,7 +97,7 @@ Uso general: `mutate_USIG_geocode(data, address)`, donde
     Aires
 -   `address` es el nombre de la columna que contiene las direcciones
 
-La direcciones debe estar expresadas como se explica para `USIG_geocode`
+Las direcciones deben estar expresadas usando el mismo formato que requiere `USIG_geocode`
 
 #### Ejemplo
 
@@ -181,7 +181,7 @@ Uso general: `mutate_USIG_geocode(data, address)`, donde
     de un barrio vulnerable de la Ciudad de Buenos Aires.
 -   `address` es el nombre de la columna que contiene las direcciones
 
-La direcciones debe estar expresadas como se explica para `USIG_geocode_barrios_vulnerables`
+Las direcciones deben estar expresadas usando el mismo formato que requiere `USIG_geocode_barrios_vulnerables`
 
 #### Ejemplo
 
